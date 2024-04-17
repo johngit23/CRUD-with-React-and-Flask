@@ -14,9 +14,6 @@ def create_contact():
     last_name = request.json.get("lastName")
     email = request.json.get("email")
 
-    if Contact.query.filter_by(email=new_contact.email).first():
-        return jsonify({'error': 'email already in use'}), 400
-
     if not first_name or not last_name or not email:
         return (
             jsonify({"message": "You must include a first name, last name and email"}),
